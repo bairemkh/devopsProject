@@ -2,9 +2,11 @@ package tn.esprit.devops_project.services;
 
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import tn.esprit.devops_project.entities.Stock;
@@ -19,8 +21,9 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
-@SpringJUnitConfig
+//@SpringBootTest
+//@SpringJUnitConfig
+@ExtendWith(MockitoExtension.class)
 class SupplierServiceImplTest {
     @InjectMocks
     private SupplierServiceImpl supplierService;
@@ -96,15 +99,10 @@ class SupplierServiceImplTest {
             return savedSupplier;
         });
         Supplier addedSupplier = supplierService.addSupplier(mockSupplier);
-        when(supplierRepository.findById(addedSupplier.getIdSupplier())).thenReturn(Optional.of(addedSupplier));
-        //doNothing().when(supplierRepository).delete(addedSupplier);
-        doAnswer(invocation -> {
-            Supplier savedSupplier = invocation.getArgument(0);
-            savedSupplier.setIdSupplier(null);
-            return null;
-        }).when(supplierRepository).delete(addedSupplier);
         assertDoesNotThrow(() -> supplierService.deleteSupplier(addedSupplier.getIdSupplier()));
     }
+
+
 
     @Test
     void retrieveSupplier() {

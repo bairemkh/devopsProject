@@ -1,10 +1,12 @@
 package tn.esprit.devops_project.services;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
@@ -17,8 +19,9 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-@SpringJUnitConfig
+//@SpringBootTest
+//@SpringJUnitConfig
+@ExtendWith(MockitoExtension.class)
 class StockServiceImplTest {
 
     @InjectMocks
@@ -27,9 +30,7 @@ class StockServiceImplTest {
     @Mock
     private StockRepository stockRepository;
 
-    public void setUp() {
-        MockitoAnnotations.initMocks(this);
-    }
+
 
     @Test
     void addStock() {

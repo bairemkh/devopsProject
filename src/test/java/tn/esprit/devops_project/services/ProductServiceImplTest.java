@@ -1,8 +1,10 @@
 package tn.esprit.devops_project.services;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import tn.esprit.devops_project.entities.Product;
@@ -18,8 +20,9 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
-@SpringJUnitConfig
+//@SpringBootTest
+//@SpringJUnitConfig
+@ExtendWith(MockitoExtension.class)
 class ProductServiceImplTest {
     @InjectMocks
     private ProductServiceImpl productService;
@@ -104,7 +107,6 @@ class ProductServiceImplTest {
     @Test
     void deleteProduct() {
         doNothing().when(productRepository).deleteById(1L);
-
         assertDoesNotThrow(() -> productService.deleteProduct(1L));
         verify(productRepository, times(1)).deleteById(1L);
     }

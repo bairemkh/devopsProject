@@ -1,10 +1,12 @@
 package tn.esprit.devops_project.services;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.devops_project.entities.Operator;
 import tn.esprit.devops_project.repositories.OperatorRepository;
@@ -14,9 +16,11 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
-@SpringBootTest
+//@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 public class OperatorServiceImplTest {
 
     @InjectMocks
@@ -52,10 +56,10 @@ public class OperatorServiceImplTest {
 
     @Test
     void deleteOperator() {
-        when(operatorRepository.findById(1L)).thenReturn(Optional.of(new Operator()));
-        assertDoesNotThrow(() -> {
-            operatorService.deleteOperator(1L);
-        });
+        Operator operator = new Operator();
+        operator.setIdOperateur(1L);
+        doNothing().when(operatorRepository).deleteById(1L);
+        assertDoesNotThrow(() -> operatorService.deleteOperator(1L));
     }
 
     @Test
