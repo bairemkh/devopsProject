@@ -4,8 +4,6 @@ pipeline {
     stage('Test') {
                 steps {
                     sh 'mvn test'
-                    step([$class: 'JaCoCoPublisher', sourcePattern: '**/target/*.exec'])
-
                 }
             }
         stage('Build') {
