@@ -41,8 +41,8 @@ public class SupplierServiceImpl implements ISupplierService {
 
 	@Override
 	public Supplier retrieveSupplier(Long supplierId) {
-
-		return supplierRepository.findById(supplierId).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + supplierId));
+		var x = supplierRepository.findById(supplierId).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + supplierId));
+		return x;
 	}
 
 
