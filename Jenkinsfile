@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Build Docker Images') {
                         steps {
-                            sh 'docker build -t devops_back .'
+                            sh 'sudo docker build -t devops_back .'
                         }
         }
         stage('Push Docker Images to Docker Hub') {
