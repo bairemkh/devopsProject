@@ -13,8 +13,7 @@ pipeline {
         }
         stage('Build Docker Images') {
                         steps {
-                        def password = 'changeme'
-                        sh "echo ${password} | sudo -S docker build -t devops_back ."
+                        sh "echo changeme | sudo -S docker build -t devops_back ."
                         }
         }
         stage('Push Docker Images to Docker Hub') {
