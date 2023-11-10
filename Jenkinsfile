@@ -13,11 +13,9 @@ pipeline {
         }
         stage('Build Docker Images') {
                         steps {
-                        sh "pwd"
                         script {
                         def password = 'changeme'
-                        sh "sudo -S docker build -t devops_back ."
-                        sh "changeme"
+                        sh "echo -n ${password} | sudo docker build -t devops_back ."
                         }
                         }
         }
