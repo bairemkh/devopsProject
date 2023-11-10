@@ -22,7 +22,8 @@ pipeline {
         }
         stage('Push Docker Images to Docker Hub') {
                         steps {
-                                    sh "echo bairem123 | docker login -u bairemkh --password-stdin"
+                                    sh "docker login -u bairemkh --password-stdin"
+                                    sh "echo bairem123"
                                     sh 'docker push devops_back'
                         }
         }
