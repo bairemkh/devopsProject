@@ -14,7 +14,8 @@ pipeline {
         stage('Build Docker Images') {
                         steps {
                         script {
-                        sh "echo changeme | sudo -S -k docker build -t devops_back ."
+                        sh "echo changeme | sudo -S su"
+                        sh "sudo docker build -t devops_back ."
                         }
                         }
         }
