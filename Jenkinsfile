@@ -15,7 +15,7 @@ pipeline {
                         steps {
                         script {
                         def password = 'changeme'
-                        sh "sudo docker build -t devops_back ."
+                        sh "sudo -S docker build -t devops_back ."
                         sh "changeme"
                         }
                         }
