@@ -13,7 +13,9 @@ pipeline {
         }
         stage('Build Docker Images') {
                         steps {
-                        sh "echo changeme | sudo -S docker build -t devops_back ."
+                        script {
+                        sh "echo changeme | sudo -S -k docker build -t devops_back ."
+                        }
                         }
         }
         stage('Push Docker Images to Docker Hub') {
