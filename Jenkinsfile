@@ -25,7 +25,7 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'bairemkh', passwordVariable: 'bairem123')]) {
                         docker.withRegistry('https://registry.hub.docker.com', 'Docker Hub') {
-                            docker.image("devops_back:latest").push()
+                            docker.image("devops_back").push()
                         }
                     }
                 }
