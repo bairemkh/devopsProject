@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'bairemkh', passwordVariable: 'bairem123')]) {
-                            sh 'docker login -u bairemkh -p ${passwordVariable}'
+                            sh 'docker login -u bairemkh -p bairem123'
                             sh "docker push devops_back"
                     }
                 }
