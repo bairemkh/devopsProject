@@ -20,12 +20,16 @@ pipeline {
                         }
                         }
         }
-        stage('Push Docker Images to Docker Hub') {
-                        steps {
-                                    sh "docker login -u bairemkh --password-stdin"
-                                    sh "echo bairem123"
-                                    sh 'docker push devops_back'
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'bairemkh', passwordVariable: 'bairem123')]) {
+                        docker.withRegistry('https://registry.hub.docker.com', 'Docker Hub') {
+                            docker.image("devops_back:latest").push()
                         }
+                    }
+                }
+            }
         }
         stage('Deploy with Docker Compose') {
                         steps {
