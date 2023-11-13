@@ -36,5 +36,10 @@ pipeline {
                                     sh 'docker-compose up -d'
                         }
                 }
+        stage('Deploy with nexus') {
+        steps {
+        sh 'mvn deploy'
+        }
+        }
     }
 }
