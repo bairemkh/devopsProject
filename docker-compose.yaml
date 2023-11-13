@@ -22,9 +22,3 @@
         SPRING_DATASOURCE_USERNAME: root
         SPRING_DATASOURCE_PASSWORD:
 
-    angular:
-      image: devops_front
-      ports:
-        - "4000:4000"
-      depends_on:
-        - spring
