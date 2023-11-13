@@ -5,10 +5,9 @@
       restart: unless-stopped
       environment:
         MYSQL_DATABASE: devops
-        MYSQL_USER: root
-        MYSQL_PASSWORD: root
+        MYSQL_ALLOW_EMPTY_PASSWORD: yes
       ports:
-        - "3306:3307"
+        - "3306:3306"
     spring:
       image: devops_back
       build: ./
