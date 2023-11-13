@@ -23,8 +23,8 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'docker-login',usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
-                            sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
+                    withCredentials([string(credentialsId: 'docker-token', variable: 'DOCKERHUB_TOKEN')]) {
+                            sh 'docker login -u bairemkh -p $DOCKERHUB_TOKEN'
                             sh 'docker tag devops_back devops_back:latest'
                             sh "docker push devops_back"
                     }
