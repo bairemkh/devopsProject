@@ -35,6 +35,7 @@ pipeline {
         }
         stage('Deploy with Docker Compose') {
                         steps {
+                                    sh 'cp prometheus.yml /etc/prometheus/prometheus.yml'
                                     sh 'docker-compose up -d'
                         }
                 }
