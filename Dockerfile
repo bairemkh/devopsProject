@@ -1,4 +1,5 @@
 FROM openjdk:11
+FROM prom/prometheus:latest
 COPY target/DevOps_Project-1.0.jar DevOps_Project-1.0.jar
 COPY prometheus.yml /etc/prometheus/prometheus.yml
 EXPOSE 8082
