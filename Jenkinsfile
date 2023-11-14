@@ -36,9 +36,6 @@ pipeline {
         stage('Deploy with Docker Compose') {
                         steps {
                         script {
-                        def password = 'changeme'
-                        sh 'sudo -S cp prometheus.yml /etc/prometheus/prometheus.yml'
-                        sh "echo -n ${password} "
                         sh 'docker-compose up -d'
                         sh 'docker-compose ps'
                         sh 'docker-compose logs grafana'
