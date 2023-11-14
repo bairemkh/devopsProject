@@ -19,6 +19,7 @@ pipeline {
                         def password = 'changeme'
                         sh "sudo -S docker build -t devops_back ."
                         sh "echo -n ${password} "
+                        sh "sudo docker build -f prometheus/Dockerfile prometheus ."
                         }
                         }
         }
