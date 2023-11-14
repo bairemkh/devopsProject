@@ -35,11 +35,16 @@ pipeline {
         }
         stage('Deploy with Docker Compose') {
                         steps {
-                                    sh 'docker-compose up -d'
-                                    sh 'docker-compose ps'
-                                    sh 'docker-compose logs grafana'
-                                    sh 'docker-compose logs prometheus'
-                                    sh 'docker network ls'
+                        script {
+                        def password = 'changeme'
+                        sh 'sudo cp prometheus.yml /etc/prometheus/prometheus.yml'
+                        sh "echo -n ${password} "
+                        sh 'docker-compose up -d'
+                        sh 'docker-compose ps'
+                        sh 'docker-compose logs grafana'
+                        sh 'docker-compose logs prometheus'
+                        sh 'docker network ls'
+                        }
                         }
                 }
     }
