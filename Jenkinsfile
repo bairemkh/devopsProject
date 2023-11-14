@@ -37,7 +37,7 @@ pipeline {
                         steps {
                         script {
                         def password = 'changeme'
-                        sh 'sudo cp prometheus.yml /etc/prometheus/prometheus.yml'
+                        sh 'sudo -S cp prometheus.yml /etc/prometheus/prometheus.yml'
                         sh "echo -n ${password} "
                         sh 'docker-compose up -d'
                         sh 'docker-compose ps'
