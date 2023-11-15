@@ -22,19 +22,17 @@
         SPRING_DATASOURCE_PASSWORD:
     prometheus:
       image: prom/prometheus:latest
-      restart: always
+      restart: unless-stopped
       ports:
         - "9090:9090"
       volumes:
         - ./prometheus:/etc/prometheus
-      command:
-        - '--config.file=/etc/prometheus/prometheus.yml'
       networks:
         - monitoring-net
 
     grafana:
       image: grafana/grafana:latest
-      restart: always
+      restart: unless-stopped
       ports:
         - "3000:3000"
       environment:

@@ -2,15 +2,11 @@ global:
   scrape_interval: 15s
 
 scrape_configs:
-  - job_name: 'spring-boot-app'
+  - job_name: 'spring'
+    metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['host.docker.internal:8082']
-  - job_name: jenkins
+      - targets: ['localhost:8082']
+  - job_name: 'jenkins'
     metrics_path: /prometheus
     static_configs:
-      - targets: [ '10.0.2.15:8080' ]
-
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets: ['alertmanager:9093']
+        - targets: [ '10.0.2.15:8082' ]
