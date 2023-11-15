@@ -37,6 +37,7 @@ pipeline {
                         steps {
                         script {
                         sh 'docker-compose up -d'
+                        sh 'sudo docker pull prom/prometheus'
                         sh 'docker-compose ps'
                         sh 'docker-compose logs grafana'
                         sh 'docker-compose logs prometheus'
