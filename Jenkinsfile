@@ -60,7 +60,18 @@ pipeline {
                         }
                     }
                 }
-
-
     }
+    post {
+            success {
+                emailext subject: 'Jenkins Pipeline - Success',
+                          body: 'The Jenkins pipeline has completed successfully.',
+                          to: 'bairem.khedhri@esprit.tn'
+            }
+
+            failure {
+                emailext subject: 'Jenkins Pipeline - Failure',
+                          body: 'The Jenkins pipeline has failed. Please check the build logs.',
+                          to: 'bairem.khedhri@esprit.tn'
+            }
+        }
 }
