@@ -22,7 +22,6 @@
         SPRING_DATASOURCE_PASSWORD:
     prometheus:
       image: prom/prometheus:latest
-      restart: on-failure
       ports:
         - "9090:9090"
       volumes:
@@ -34,7 +33,6 @@
 
     grafana:
       image: grafana/grafana:latest
-      restart: on-failure
       ports:
         - "3000:3000"
       environment:
