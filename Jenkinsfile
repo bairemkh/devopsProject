@@ -37,6 +37,7 @@ pipeline {
                         steps {
                         script {
                         sh 'docker-compose ps'
+                        sh 'docker stop $(docker ps -aq) && docker rm $(docker ps -a -q)'
                         sh 'docker ps'
                         sh 'docker-compose up -d'
                         sh 'docker-compose ps'
