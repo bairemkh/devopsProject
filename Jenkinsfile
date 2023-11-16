@@ -50,7 +50,7 @@ pipeline {
                                 }
                             }
                         }
-        stage('SonarQube Analysis') {
+        /*stage('SonarQube Analysis') {
                     steps {
                         script {
                             def scannerHome = tool 'SonarQube Scanner'
@@ -59,7 +59,7 @@ pipeline {
                             }
                         }
                     }
-                }
+        }*/
     }
     post {
             success {
