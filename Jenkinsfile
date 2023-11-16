@@ -45,7 +45,7 @@ pipeline {
         stage('Configure Prometheus') {
                     steps {
                         script {
-                        sh 'docker cp prometheus.yml prom/prometheus:latest:/etc/prometheus/prometheus.yml'
+                        sh 'docker cp prometheus.yml prometheus:/etc/prometheus/prometheus.yml'
                         sh 'docker exec prometheus cat /etc/prometheus/prometheus.yml'
                         }
                     }
