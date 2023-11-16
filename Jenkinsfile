@@ -45,16 +45,6 @@ pipeline {
                     steps {
                         script {
                         sh 'docker run -d --name prometheus -p 9090:9090 prom/prometheus'
-                        sh "docker exec -it prometheus sh"
-                            sh """
-                                tee -a /etc/prometheus/prometheus.yml <<EOF
-                                  - job_name: jenkins
-                                    metrics_path: /prometheus
-                                    static_configs:
-                                      - targets: ['10.0.2.15:8082']
-                                EOF
-                            """
-                        sh 'exit'
                         sh 'docker exec prometheus cat /etc/prometheus/prometheus.yml'
                         }
                     }
