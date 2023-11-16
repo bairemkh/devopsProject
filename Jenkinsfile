@@ -36,8 +36,6 @@ pipeline {
         stage('Deploy with Docker Compose') {
                         steps {
                         script {
-                        sh 'docker-compose ps'
-                        sh 'docker stop $(docker ps -aq) && docker rm $(docker ps -a -q)'
                         sh 'docker ps'
                         sh 'docker-compose up -d'
                         sh 'docker-compose ps'
@@ -47,7 +45,6 @@ pipeline {
         stage('Configure Prometheus') {
                     steps {
                         script {
-                        sh 'docker run -d --name prometheus -p 9090:9090 prom/prometheus'
                         sh 'docker cp prometheus.yml prometheus:/etc/prometheus/prometheus.yml'
                         sh 'docker exec prometheus cat /etc/prometheus/prometheus.yml'
                         }
