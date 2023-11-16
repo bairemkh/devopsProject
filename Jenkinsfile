@@ -36,7 +36,6 @@ pipeline {
         stage('Deploy with Docker Compose') {
                         steps {
                         script {
-                        sh 'docker stop $(docker ps -aq) && docker rm $(docker ps -a -q)'
                         sh 'docker ps'
                         sh 'docker-compose up -d'
                         }
