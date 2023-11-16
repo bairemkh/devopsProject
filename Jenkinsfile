@@ -36,7 +36,10 @@ pipeline {
         stage('Deploy with Docker Compose') {
                         steps {
                         script {
+                        sh 'docker-compose ps'
+                        sh 'docker ps'
                         sh 'docker-compose up -d'
+                        sh 'docker-compose ps'
                         }
                         }
         }
